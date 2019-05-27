@@ -1,5 +1,7 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
 
 const TodoList = ({items, handleDone, handleDelete}) => (
     <Fragment>
@@ -26,4 +28,6 @@ TodoList.propTypes = {
     handleDone: PropTypes.func.isRequired,
 };
 
-export default TodoList;
+const mapStateToProps = state => ({todos: state.todos});
+
+export default connect(mapStateToProps)(TodoList);
