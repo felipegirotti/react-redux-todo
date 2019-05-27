@@ -1,6 +1,8 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { handleDone, handleDelete } from './../../store/actions/todos';
+import { bindActionCreators } from 'redux';
 
 
 const TodoList = ({items, handleDone, handleDelete}) => (
@@ -28,6 +30,7 @@ TodoList.propTypes = {
     handleDone: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({todos: state.todos});
+const mapStateToProps = state => ({items: state.todos.items});
+const mapDispatchToProps = dispatch => bindActionCreators({ handleDone: handleDone, handleDelete: handleDelete }, dispatch);
 
-export default connect(mapStateToProps)(TodoList);
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
