@@ -12,7 +12,7 @@ const TodoList = ({items, handleDone, handleDelete}) => (
             {items.map(todo => (
                 <Fragment key={todo.id}>
                     <li className={todo.done ? 'line-strike' : ''}>{todo.title}</li>
-                    <button onClick={() => handleDone(todo.id)}>Terminado</button>
+                    <button onClick={() => handleDone(todo.id, todo.title)}>Terminado</button>
                     <button onClick={() => handleDelete(todo.id)}>Apagar</button>
                 </Fragment>
             ))}

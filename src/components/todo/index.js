@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './todo.css';
 import TodoList from './../todolist'
 import Api from './../../service/api/todo'
-import { addTodo } from '../../store/actions/todos';
+import { addTodo, fetchData } from '../../store/actions/todos';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -10,6 +10,7 @@ class Todo extends Component {
     state = { todo: '', disabled: false/*, items: [{ id: 1, title: 'alguma coisa', done: false }]*/ }
 
     componentDidMount() {
+        this.props.fetchData();
         // Api.get()
         //     .then(response => (this.setState({ ...this.state, items: response.data })));
     }
@@ -72,6 +73,6 @@ class Todo extends Component {
     }
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({addTodo}, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({addTodo, fetchData}, dispatch);
 
 export default connect(null, mapDispatchToProps)(Todo);
